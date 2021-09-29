@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block titile %} {{hospital_detail}} {% endblock %}
+
+{% block content %}
+
+<main>
+    
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">{{hospital_detail}}</h1>
+        {% if hospital_detail.photo %}
+        <img src="{{hospital_detail.photo.url}}" alt="photo" height="300px" width="600px">
+        {% endif %}
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p> 
+
+            {% for doctor in doctor_detail %}
+        <table class="table">
+            <tr>
+                <th>Терапевт/Хирург</th>
+                <th>ФИО</th>
+                <th>ПИН</th>
+                <th>Дата рождения</th>
+                <th>Номер телефона</th>
+                <th>Больница</th>
+                <th>Медсестра</th>
+            </tr>
+            <tr><td>{{doctor.position}}</td>
+                <td>{{doctor.name}}</td>
+                <td>{{doctor.pin}}</td>
+                <td>{{doctor.birthdate}}</td>
+                <td>{{doctor.phone}}</td>
+                <td>{{doctor.hospital}}</td>
+                <td>{{doctor.nurse}}</td>
+            </tr>
+        </table>
+        {%endfor%}
+          <a href="{% url 'adddoctor' %}" class="btn btn-primary my-2">Добавить доктора</a>
+          <a href="{% url 'index' %}" class="btn btn-primary">Назад</a>
+          <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+ 
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+{% endblock %}
